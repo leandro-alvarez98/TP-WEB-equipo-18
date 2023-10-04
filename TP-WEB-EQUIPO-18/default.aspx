@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h1>    hola</h1>
+            <h1>    AHORA SI LOCO AGREGALE LAS OTRAS PAGINAS SI QUERES SOLO HICE ESTA DE DEFAULT PARA VER SI FUNCIONABA </h1>
         </div>
     </form>
 </body>
