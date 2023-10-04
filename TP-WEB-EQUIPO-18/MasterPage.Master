@@ -31,12 +31,16 @@
               </div>
             </nav>
             <!--FIN NAV-->
-            <hr />
-            <footer>Un footer</footer>
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+
             </asp:ContentPlaceHolder>
         </div>
     </form>
+    <!--INICIO FOOTER-->
+    <hr />
+    <footer>Un footer</footer>
+    <!--INICIO FOOTER-->
 </body>
 </html>

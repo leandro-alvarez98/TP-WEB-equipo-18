@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -70,6 +71,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos.cs" />
+    <Compile Include="Articulo.cs" />
+    <Compile Include="ArticuloNegocio.cs" />
+    <Compile Include="Categoria.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -77,6 +82,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Imagen.cs" />
+    <Compile Include="ImagenNegocio.cs" />
+    <Compile Include="Marca.cs" />
     <Compile Include="Pagina_1.aspx.cs">
       <DependentUpon>Pagina_1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
