@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TP_WEB_EQUIPO_18
 {
-    public partial class Formulario_web1 : System.Web.UI.Page
+    public partial class MasterPage : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

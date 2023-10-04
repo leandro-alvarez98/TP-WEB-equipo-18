@@ -11,7 +11,7 @@ namespace TP_WEB_EQUIPO_18
 {
 
 
-    public partial class Formulario_web1
+    public partial class Formulario_web11
     {
     }
 }
