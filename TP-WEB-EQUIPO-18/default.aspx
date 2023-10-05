@@ -6,5 +6,6 @@
 
     <h1>ComprasWeb (?</h1>
     <p> es la página principal del webform.</p>
+    <asp:Image ID="imgMostrar" runat="server" />
 
 </asp:Content>
