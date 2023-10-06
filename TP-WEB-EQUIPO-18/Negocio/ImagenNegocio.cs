@@ -38,50 +38,5 @@ namespace TP_WEB_EQUIPO_18
                 datos.cerrarConexion();
             }
         }
-        public void añadir(Articulo articulo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setConsulta("INSERT INTO IMAGENES VALUES(" + articulo.ID + ", '" + articulo.Imagenes.Last() + "')");
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-        public bool Tiene_ImagenDefault(Articulo articulo)
-        {
-            if (articulo.Imagenes.Count > 1)
-            {
-                if (articulo.Imagenes.First() == "")
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        public void eliminar_imagen(Articulo articulo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setConsulta("DELETE FROM IMAGENES WHERE Id = " + articulo.ID + " AND ImagenUrl = ''");
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
     }
 }
