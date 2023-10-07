@@ -19,7 +19,7 @@ namespace TP_WEB_EQUIPO_18
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                listaArticulos = negocio.listar();
+                listaArticulos = negocio.Listar_con_SP();
             }
             catch (Exception ex)
             {

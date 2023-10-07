@@ -94,6 +94,87 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public List<Articulo> Listar_con_SP()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setProcedimiento("storeListar");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo objetoArticulo = new Articulo();
+
+                    objetoArticulo.ID = (int)datos.Lector["Id"];
+
+                    if (!(datos.Lector["Codigo"] is DBNull))
+                    {
+                        objetoArticulo.Codigo = (string)datos.Lector["Codigo"];
+                    }
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                    {
+                        objetoArticulo.Nombre = (string)datos.Lector["Nombre"];
+                    }
+                    if (!(datos.Lector["Descripcion"] is DBNull))
+                    {
+                        objetoArticulo.Descripcion = (string)datos.Lector["Descripcion"];
+                    }
+
+                    objetoArticulo.Marca = new Marca();
+                    if (!(datos.Lector["marca"] is DBNull))
+                    {
+                        objetoArticulo.Marca.Id = (int)datos.Lector["marca"];
+                        objetoArticulo.Marca.Descripcion = (string)datos.Lector["mdescripcion"];
+                    }
+
+                    objetoArticulo.Categoria = new Categoria();
+                    if (!(datos.Lector["categoria"] is DBNull))
+                    {
+                        objetoArticulo.Categoria.Id = (int)datos.Lector["categoria"];
+                    }
+                    if (!(datos.Lector["cdescripcion"] is DBNull))
+                    {
+                        objetoArticulo.Categoria.Descripcion = (string)datos.Lector["cdescripcion"];
+                    }
+                    else
+                    {
+                        objetoArticulo.Categoria.Descripcion = "-";
+                    }
+
+                    if (!(datos.Lector["Precio"] is DBNull))
+                        objetoArticulo.Precio = (decimal)datos.Lector["Precio"];
+
+
+                    objetoArticulo.Imagenes = new List<String>();
+
+                    objetoArticulo.Imagen = new Imagen();
+
+                    if (!(datos.Lector["link"] is DBNull))
+                    {
+                        objetoArticulo.Imagen.ImagenUrl = (string)datos.Lector["link"];
+                        objetoArticulo.Imagenes.Add((string)datos.Lector["link"]);
+                    }
+                    else
+                    {
+                        objetoArticulo.Imagenes.Add("Sin imagen");
+                    }
+
+                    lista.Add(objetoArticulo);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        } 
         public void agregar(Articulo nuevo_articulo)
         {
             AccesoDatos datos = new AccesoDatos();
