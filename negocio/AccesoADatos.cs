@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace TP_WEB_EQUIPO_18
+namespace negocio
 {
     public class AccesoDatos
     {
@@ -58,7 +59,7 @@ namespace TP_WEB_EQUIPO_18
         {
             comando.Parameters.AddWithValue(nombre, valor);
         }
-
+        
         public void cerrarConexion()
         {
             if (lector != null)

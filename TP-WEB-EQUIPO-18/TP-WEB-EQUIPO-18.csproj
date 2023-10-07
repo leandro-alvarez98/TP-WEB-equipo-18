@@ -67,16 +67,11 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Imagenes\icons8-centro-comercial-50.png" />
-    <Content Include="Pagina_1.aspx" />
+    <Content Include="DetalleArticulo.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dominio\AccesoDatos.cs" />
-    <Compile Include="Dominio\Articulo.cs" />
-    <Compile Include="Negocio\ArticuloNegocio.cs" />
-    <Compile Include="Dominio\Categoria.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -84,15 +79,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dominio\Imagen.cs" />
-    <Compile Include="Negocio\ImagenNegocio.cs" />
-    <Compile Include="Dominio\Marca.cs" />
-    <Compile Include="Pagina_1.aspx.cs">
-      <DependentUpon>Pagina_1.aspx</DependentUpon>
+    <Compile Include="DetalleArticulo.aspx.cs">
+      <DependentUpon>DetalleArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pagina_1.aspx.designer.cs">
-      <DependentUpon>Pagina_1.aspx</DependentUpon>
+    <Compile Include="DetalleArticulo.aspx.designer.cs">
+      <DependentUpon>DetalleArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -115,7 +107,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{1d637bdf-8f4d-41fe-aa0e-468b342939c9}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\negocio\negocio.csproj">
+      <Project>{2235c57b-184e-4d7e-a4d6-9bbd1da2d910}</Project>
+      <Name>negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
