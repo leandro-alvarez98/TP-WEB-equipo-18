@@ -32,15 +32,6 @@ namespace TP_WEB_EQUIPO_18
             if (!IsPostBack)
             {
                 cargar_componentes();
-                // Verificamos si la lista tiene al menos una URL de imagen.
-                if (listaArticulos.Count > 0)
-                {
-
-                }
-                else
-                {
-                    // Manejo de errores o mensaje de que no hay artículos disponibles.
-                }
             }
         }
 
