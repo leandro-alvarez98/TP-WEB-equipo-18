@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Estilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="Imagenes\icons8-centro-comercial-50.png" />
     <Content Include="DetalleArticulo.aspx" />
