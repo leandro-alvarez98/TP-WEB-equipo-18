@@ -31,8 +31,9 @@
             </div>
             <div class="mb-3">
                 <label for="txtCategoria" class="form-label">Categoria</label>
-                <asp:DropDownList ID="ddlCategoria" CssClass="form-select"  runat="server"> </asp:DropDownList>
+                <asp:DropDownList ID="ddlCategoria" ccclass="form-select" runat="server"> </asp:DropDownList>
             </div>
+            
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio</label>
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control"/>
@@ -41,7 +42,9 @@
                 <label for="txtImagen" class="form-label">Imagen</label>
                 <asp:FileUpload runat="server" ID="txtImagen" CssClass="form-control" />
             </div>
-            <%--  <div class="mb-3">
+            <%-- Comente el boton, esta dando error
+                
+                <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" ccclass="btn btn-primary" OnClick="btnAceptar_Click" runat="server"/>
                 <a href="Default.aspx">Cancelar</a>
 

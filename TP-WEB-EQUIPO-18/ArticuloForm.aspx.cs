@@ -14,5 +14,17 @@ namespace TP_WEB_EQUIPO_18
         {
             //aca se habilita la informacion de los desplegables 
         }
+        protected void btnAceptar_Click(object sender, EventArgs e) { 
+            Articulo articulo = new Articulo();
+            /* articulo.Codigo = txtCodigo.Text;
+             articulo.Nombre = txtNombre.Text;
+             articulo.Descripcion = txtDescripcion.Text;
+             articulo.Marca = ddlMarcas.SelectedValue;
+             articulo.Categoria = ddlCategoria.SelectedValue;
+             articulo.Precio = int.Parse(txtPrecio.Text);
+             articulo.Imagen = 
+            */
+
+        }
     }
 }
