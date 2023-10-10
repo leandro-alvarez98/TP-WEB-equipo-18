@@ -8,6 +8,16 @@
     
     <h1>ComprasWeb (?</h1>
     <p>Esta es la página principal del webform.</p>
+     <%--FILTRADO--%> 
+
+    <div class="mb-3">
+        <label for="txtMarca" class="form-label">Marca</label>
+        <asp:DropDownList ID="ddlMarcas" ccclass="form-select" runat="server"></asp:DropDownList>
+    </div>
+    <div class="mb-3">
+        <label for="txtCategoria" class="form-label">Categoria</label>
+        <asp:DropDownList ID="ddlCategoria" ccclass="form-select" runat="server"></asp:DropDownList>
+    </div>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
         <% if (listaArticulos.Count > 0)

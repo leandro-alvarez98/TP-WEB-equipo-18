@@ -25,14 +25,7 @@
                 <label for="txtDescripcion" class="form-label">Descripcion</label>
                 <asp:TextBox runat="server" TextMode="Multiline" ID="txtDescripcion" CssClass="form-control"/>
             </div> 
-            <div class="mb-3">
-                <label for="txtMarca" class="form-label">Marca</label>
-                <asp:DropDownList ID="ddlMarcas" ccclass="form-select" runat="server"> </asp:DropDownList>
-            </div>
-            <div class="mb-3">
-                <label for="txtCategoria" class="form-label">Categoria</label>
-                <asp:DropDownList ID="ddlCategoria" ccclass="form-select" runat="server"> </asp:DropDownList>
-            </div>
+            
             
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio</label>
