@@ -82,17 +82,20 @@
     <!--Botón siguiente: -->
     <script>
         //Convierte la lista C# en una lista JavaScript
-        var imagenes = <%=ConvertirImagenesAJavaScript()%>;
-        console.log(imagenes.length);
-        document.addEventListener('DOMContentLoaded', function () {
-            var imagenCarrusel = document.getElementById('imagenCarrusel');
-            var botonSiguiente = document.querySelector('.carousel-control-next');
-            var indiceActual = 0;
+        let imagenes = <%=ConvertirImagenesAJavaScript()%>;
+        document.addEventListener('DOMContentLoaded', function ()
+        {
+            let imagenCarrusel = document.getElementById('imagenCarrusel');
+            let botonSiguiente = document.querySelector('.carousel-control-next');
+            let indiceActual = 0;
 
-            botonSiguiente.addEventListener('click', function () {
-                if (indiceActual < imagenes.length - 1) {
+            botonSiguiente.addEventListener('click', function ()
+            {
+                if (indiceActual < imagenes.length - 1)
+                {
                     indiceActual++;
-                } else {
+                } else
+                {
                     indiceActual = 0; // Vuelve al principio cuando alcanza el final
                 }
 

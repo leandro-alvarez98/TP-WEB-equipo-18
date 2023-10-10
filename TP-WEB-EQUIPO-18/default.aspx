@@ -30,6 +30,7 @@
                                    <h5 class="card-title"><%= articulo.Nombre %></h5>
                                    <p class="card-text"><%= articulo.Descripcion %></p>
                                    <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>"> Ver articulo </a>
+                                   <%--<asp:Button ID="Button1" runat="server" Text="Agregar" OnClick="" />--%>
                                </div>
                            </div>
                        </div>

@@ -22,10 +22,21 @@
             <!--INICIO NAV-->
             <nav class="navbar bg-body-tertiary">
               <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="Default.aspx">
                   <img src="Imagenes/icons8-centro-comercial-50.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                   E-Commerce
                 </a>
+
+                  <!-- Carrito de compras -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Carrito de Compras
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!-- Contenido del carrito de compras -->
+                           
+                        </div>
+                    </div>
               </div>
             </nav>
             <!--FIN NAV-->
