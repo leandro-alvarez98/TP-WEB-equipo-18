@@ -63,7 +63,7 @@ namespace TP_WEB_EQUIPO_18
         private void EliminarRepetidos()
         {
             List<Articulo> repetidos = EncontrarRepetidos();
-            foreach(Articulo repetido in repetidos)
+            foreach (Articulo repetido in repetidos)
             {
                 listaArticulos.Remove(repetido);
             }
@@ -73,8 +73,44 @@ namespace TP_WEB_EQUIPO_18
             if (!IsPostBack)
             {
                 CargarComponentes();
+
+                CategoriaNegocio negocio = new CategoriaNegocio();
+                List<Categoria> categorias = negocio.listar();
+                ddlCategoria.DataTextField = "Descripcion";
+                ddlCategoria.DataValueField = "Id";
+                ddlCategoria.DataSource = categorias;
+                ddlCategoria.DataBind();
+                //CargarMarcas();
             }
+
+
+
         }
+
+        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Crear una instancia de tu clase CategoriaNegocio
+            CategoriaNegocio negocio = new CategoriaNegocio();
+
+            // Obtener la categoría seleccionada
+            string categoriaSeleccionada = ddlCategoria.SelectedItem.Value;
+
+            // Obtener las marcas correspondientes a la categoría seleccionada
+            List<Marca> marcas = negocio.ObtenerMarcasPorCategoria(categoriaSeleccionada);
+
+            // Configurar el DropDownList de Marcas
+            ddlMarcas.DataTextField = "Descripcion";
+            ddlMarcas.DataValueField = "Id";
+            ddlMarcas.DataSource = marcas;
+            ddlMarcas.DataBind();
+        }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+        }
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+        }
+
 
     }
 }

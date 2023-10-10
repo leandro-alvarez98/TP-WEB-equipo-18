@@ -11,13 +11,15 @@
      <%--FILTRADO--%> 
 
     <div class="mb-3">
-        <label for="txtMarca" class="form-label">Marca</label>
-        <asp:DropDownList ID="ddlMarcas" ccclass="form-select" runat="server"></asp:DropDownList>
+        <label for="txtCategoria" class="form-label">Categoria</label>
+        <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>
     </div>
     <div class="mb-3">
-        <label for="txtCategoria" class="form-label">Categoria</label>
-        <asp:DropDownList ID="ddlCategoria" ccclass="form-select" runat="server"></asp:DropDownList>
+        <label for="txtMarca" class="form-label">Marca</label>
+        <asp:DropDownList ID="ddlMarcas" ccclass="form-select" runat="server" ></asp:DropDownList>
     </div>
+    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
+
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
         <% if (listaArticulos.Count > 0)
@@ -40,7 +42,7 @@
                                    <h5 class="card-title"><%= articulo.Nombre %></h5>
                                    <p class="card-text"><%= articulo.Descripcion %></p>
                                    <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>"> Ver articulo </a>
-                                   <%--<asp:Button ID="Button1" runat="server" Text="Agregar" OnClick="" />--%>
+                                   <asp:Button ID="btnAceptar" runat="server" Text="Ver Articulo" OnClick="btnAceptar_Click" />
                                </div>
                            </div>
                        </div>

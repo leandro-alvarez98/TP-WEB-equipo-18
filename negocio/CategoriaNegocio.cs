@@ -39,5 +39,40 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<Marca> ObtenerMarcasPorCategoria(string categoriaId)
+        {
+            List<Marca> marcas = new List<Marca>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "SELECT Id, Descripcion FROM MARCAS WHERE IdCategorias = @CategoriaId";
+
+                datos.setConsulta(consulta);
+                datos.setParametro("@CategoriaId", categoriaId);
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Marca marcaActual = new Marca();
+                    marcaActual.Id = (int)datos.Lector["Id"];
+                    marcaActual.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    marcas.Add(marcaActual);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return marcas;
+        }
     }
 }
