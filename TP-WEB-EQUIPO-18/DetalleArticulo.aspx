@@ -5,9 +5,8 @@
 
     <h1>DETALLE DEL ARTÍCULO</h1>
 
-    <asp:Button ID="agregar_a_carrito" runat="server" Text="Agregar a Carrito" OnClick="btnAgregar_Click" />
 
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    
 
     <!-- Detalles del artículo -->
     <div class="container">
@@ -66,6 +65,9 @@
     { %>
        <img src="https://sportshub.cbsistatic.com/i/2022/08/20/184ad631-2e9c-419c-bf75-9c288db1610e/rick-astley-never-gonna-give-you-up-meme.jpg" class="card-img-top" alt="...">
     <% } %>
+
+      <asp:Button ID="agregar_a_carrito" CssClass="btn btn-secondary" runat="server" Text="Agregar al Carrito" OnClick="btnAgregar_Click" />
+
 
     <!--Este código cambia la imágen en base al botón que apretemos -->
     <!--Botón siguiente: -->

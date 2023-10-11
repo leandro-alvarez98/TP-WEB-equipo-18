@@ -15,6 +15,24 @@ namespace TP_WEB_EQUIPO_18
     {
 
         /// <summary>
+        /// Control empeza_el_carrito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl empeza_el_carrito;
+
+        /// <summary>
+        /// Control btnRedirigir_default.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRedirigir_default;
+
+        /// <summary>
         /// Control lblCant_total_articulos.
         /// </summary>
         /// <remarks>
