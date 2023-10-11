@@ -23,7 +23,6 @@ namespace TP_WEB_EQUIPO_18
                 CargarArticulosEnCarrito();
             }
         }
-
         public void CargarArticulosEnCarrito()
         {
             if (Session["Carrito"] != null)
@@ -36,19 +35,12 @@ namespace TP_WEB_EQUIPO_18
                 // Luego agrega los artículos de la lista a la DropDownList
                 foreach (CarritoItem item in carrito)
                 {
-                    ListItem listItem = new ListItem($"{item.Nombre} - ${item.Precio} ({item.Cantidad} en carrito)", item.IdArticulo.ToString());
+                    ListItem listItem = new ListItem($"{item.Nombre} - ${item.Precio} ({item.Cantidad} en carrito)", item.ID.ToString());
                     DropDownList1.Items.Add(listItem);
                     articulos_totales += item.Cantidad;
                 }
-                
-
             }
         }
-        public void EliminarArticuloEnCarrito()
-        {
-
-        }
-
         protected void btn_vercarrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("VerCarrito.aspx",false);

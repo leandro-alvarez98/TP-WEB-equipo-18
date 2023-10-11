@@ -81,7 +81,6 @@
     <Compile Include="ArticuloForm.aspx.designer.cs">
       <DependentUpon>ArticuloForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CarritoItem.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

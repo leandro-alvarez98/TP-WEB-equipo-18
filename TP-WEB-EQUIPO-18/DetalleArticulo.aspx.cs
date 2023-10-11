@@ -87,7 +87,6 @@ namespace TP_WEB_EQUIPO_18
                 throw ex;
             }
         }
-
         public string ConvertirImagenesAJavaScript()
         {
             List<string> imagenes = new List<string>();
@@ -103,7 +102,6 @@ namespace TP_WEB_EQUIPO_18
                 return "[]";
             }
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -116,7 +114,6 @@ namespace TP_WEB_EQUIPO_18
                 throw;
             }
         }
-
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             int ID = articuloSeleccionado.ID;
@@ -126,7 +123,7 @@ namespace TP_WEB_EQUIPO_18
             // Verifica si el artículo ya está en el carrito
             List<CarritoItem> carrito = (List<CarritoItem>)Session["Carrito"];
             //Busca un elemento dentro de la lista donde cohincida el Id para encontrar repetidos.
-            CarritoItem itemExistente = carrito.FirstOrDefault(item => item.IdArticulo == ID);
+            CarritoItem itemExistente = carrito.FirstOrDefault(item => item.ID == ID);
             //En caso de que hayan repetidos, itemExistente queda distinto a null, por lo que solo se incrementa la cantidad
             if (itemExistente != null)
             {
@@ -137,7 +134,7 @@ namespace TP_WEB_EQUIPO_18
             {
                 // Si devuelve null, el item no se encuentra en la lista, por lo que crea uno.
                 CarritoItem nuevoItem = new CarritoItem();
-                nuevoItem.IdArticulo = ID;
+                nuevoItem.ID = ID;
                 nuevoItem.Nombre = NOMBRE;
                 nuevoItem.Precio = PRECIO;
                 nuevoItem.Cantidad = 1;
