@@ -10,21 +10,37 @@ namespace TP_WEB_EQUIPO_18
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        public List<Articulo> Lista_carrito;
         public Articulo articulo = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (articulo != null)
+            if (Session["Carrito"] == null)
             {
-                articulo = (Articulo)Session["articulo"];
-                Lista_carrito.Add(articulo);
-                //aca habria que ver como cargar la drop down list  con el articulo 
-                
-            }else
-            {
-                DropDownList1.Text = "hola";
+                Session["Carrito"] = new List<CarritoItem>();
             }
-           
+            if(!IsPostBack)
+            {
+                CargarArticulosEnCarrito();
+            }
         }
+
+        public void CargarArticulosEnCarrito()
+        {
+            if (Session["Carrito"] != null)
+            {
+                List<CarritoItem> carrito = (List<CarritoItem>)Session["Carrito"];
+
+                // Primero limpia la lista
+                DropDownList1.Items.Clear();
+
+                // Luego agrega los artículos de la lista a la DropDownList
+                foreach (CarritoItem item in carrito)
+                {
+                    ListItem listItem = new ListItem($"{item.Nombre} - ${item.Precio} ({item.Cantidad} en carrito)", item.IdArticulo.ToString());
+                    DropDownList1.Items.Add(listItem);
+                }
+            }
+        }
+
+
     }
 }

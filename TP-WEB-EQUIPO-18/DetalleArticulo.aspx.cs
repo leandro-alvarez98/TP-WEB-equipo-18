@@ -14,7 +14,7 @@ namespace TP_WEB_EQUIPO_18
     {
         public List<Articulo> listaArticulos { get; set; }
         public Articulo articuloSeleccionado = null;
-        private int id;
+        public int id;
         private List<Articulo> EncontrarRepetidos()
         {
             var articulosAgregados = new HashSet<int>();
@@ -54,7 +54,6 @@ namespace TP_WEB_EQUIPO_18
                 listaArticulos.Remove(repetido);
             }
         }
-
         private Articulo CargarComponentes()
         {
             listaArticulos = new List<Articulo>();
@@ -91,8 +90,6 @@ namespace TP_WEB_EQUIPO_18
 
         public string ConvertirImagenesAJavaScript()
         {
-            articuloSeleccionado = CargarComponentes();
-
             List<string> imagenes = new List<string>();
 
             imagenes = articuloSeleccionado.Imagenes;
@@ -109,7 +106,6 @@ namespace TP_WEB_EQUIPO_18
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
                 articuloSeleccionado = CargarComponentes();
@@ -119,17 +115,37 @@ namespace TP_WEB_EQUIPO_18
                 MessageBox.Show(ex.ToString());
                 throw;
             }
-
-
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (articuloSeleccionado != null)
+            int ID = articuloSeleccionado.ID;
+            string NOMBRE = articuloSeleccionado.Nombre; 
+            decimal PRECIO = articuloSeleccionado.Precio; 
+
+            // Verifica si el artículo ya está en el carrito
+            List<CarritoItem> carrito = (List<CarritoItem>)Session["Carrito"];
+            //Busca un elemento dentro de la lista donde cohincida el Id para encontrar repetidos.
+            CarritoItem itemExistente = carrito.FirstOrDefault(item => item.IdArticulo == ID);
+            //En caso de que hayan repetidos, itemExistente queda distinto a null, por lo que solo se incrementa la cantidad
+            if (itemExistente != null)
             {
-                Session.Add("articulo",articuloSeleccionado);
-                Label1.Text = "agregado al carrito";
+                // Si el artículo ya está en el carrito, incrementa la cantidad
+                itemExistente.Cantidad += 1;
             }
+            else
+            {
+                // Si devuelve null, el item no se encuentra en la lista, por lo que crea uno.
+                CarritoItem nuevoItem = new CarritoItem();
+                nuevoItem.IdArticulo = ID;
+                nuevoItem.Nombre = NOMBRE;
+                nuevoItem.Precio = PRECIO;
+                nuevoItem.Cantidad = 1;
+                carrito.Add(nuevoItem);
+            }
+
+            // Actualiza el carrito
+            Session["Carrito"] = carrito;
         }
     }
 }
