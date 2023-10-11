@@ -6,7 +6,7 @@
     <h1>Carrito de compras</h1>
 
     <%--titulo imagen y boton por si no hay objetos en el carrito--%>
-    <%if(carrito.Count == 0)
+    <%if(carrito.Count() == 0)
       {%>
         <h1 id="empeza_el_carrito" runat="server">¡Empieza un carrito de compras!</h1>
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-bag-x-fill" viewBox="0 0 16 16">

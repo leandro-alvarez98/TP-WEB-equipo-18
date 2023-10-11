@@ -11,6 +11,7 @@ namespace TP_WEB_EQUIPO_18
     public partial class MasterPage : System.Web.UI.MasterPage
     {
         public Articulo articulo = null;
+        public int articulos_totales = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Carrito"] == null)
@@ -36,8 +37,11 @@ namespace TP_WEB_EQUIPO_18
                 foreach (CarritoItem item in carrito)
                 {
                     ListItem listItem = new ListItem($"{item.Nombre} - ${item.Precio} ({item.Cantidad} en carrito)", item.IdArticulo.ToString());
-                    DropDownList1.Items.Add(listItem);   
+                    DropDownList1.Items.Add(listItem);
+                    articulos_totales += item.Cantidad;
                 }
+                
+
             }
         }
         public void EliminarArticuloEnCarrito()
