@@ -36,12 +36,18 @@ namespace TP_WEB_EQUIPO_18
                 foreach (CarritoItem item in carrito)
                 {
                     ListItem listItem = new ListItem($"{item.Nombre} - ${item.Precio} ({item.Cantidad} en carrito)", item.IdArticulo.ToString());
-                    DropDownList1.Items.Add(listItem);
-                    
+                    DropDownList1.Items.Add(listItem);   
                 }
             }
         }
+        public void EliminarArticuloEnCarrito()
+        {
 
+        }
 
+        protected void btn_vercarrito_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("VerCarrito.aspx",false);
+        }
     }
 }

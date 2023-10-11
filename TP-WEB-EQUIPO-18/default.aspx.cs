@@ -70,9 +70,10 @@ namespace TP_WEB_EQUIPO_18
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            CargarComponentes();
+
             if (!IsPostBack)
             {
-                CargarComponentes();
 
                 CategoriaNegocio negocio = new CategoriaNegocio();
                 List<Categoria> categorias = negocio.listar();
@@ -104,17 +105,15 @@ namespace TP_WEB_EQUIPO_18
             ddlMarcas.DataSource = marcas;
             ddlMarcas.DataBind();
         }
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-        }
+
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
         }
-        protected void btnFiltrar_Click(object sender, EventArgs e)
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
         {
+
         }
-
-
     }
 }

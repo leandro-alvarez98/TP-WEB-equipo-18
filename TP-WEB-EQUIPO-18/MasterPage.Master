@@ -29,10 +29,9 @@
 
                   <!-- Carrito de compras -->
                   <asp:DropDownList ID="DropDownList1" CssClass="btn btn-secondary dropdown-toggle" runat="server">
-                      <asp:ListItem Text="" Value="1" />
-                      <asp:ListItem Text="" Value="2" />
-                      <asp:ListItem Text="" Value="3" />
+                  
                   </asp:DropDownList>
+               <asp:Button ID="btn_vercarrito" runat="server" OnClick="btn_vercarrito_Click" Text="Ver Carrito" />
 
               </div>
             </nav>

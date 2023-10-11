@@ -18,11 +18,11 @@
         <label for="txtMarca" class="form-label">Marca</label>
         <asp:DropDownList ID="ddlMarcas" ccclass="form-select" runat="server" ></asp:DropDownList>
     </div>
-    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
+    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnAgregar_Click" />
 
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-        <% if (listaArticulos.Count > 0)
+        <% if (listaArticulos.Count > 0 && listaArticulos!= null )
            {
                //Hashset es como un diccionario, no almacena valores repetidos.
                var articulosAgregados = new HashSet<int>();
@@ -42,7 +42,7 @@
                                    <h5 class="card-title"><%= articulo.Nombre %></h5>
                                    <p class="card-text"><%= articulo.Descripcion %></p>
                                    <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>"> Ver articulo </a>
-                                   <asp:Button ID="btnAceptar" runat="server" Text="Ver Articulo" OnClick="btnAceptar_Click" />
+                                   <asp:Button ID="btnAceptar" runat="server" Text="Ver Articulo" OnClick="btnAceptar_Click"/>
                                    <asp:Button ID="agregar_a_carrito" runat="server" Text="Agregar a Carrito" OnClick="btnAgregar_Click" />
                                </div>
                            </div>

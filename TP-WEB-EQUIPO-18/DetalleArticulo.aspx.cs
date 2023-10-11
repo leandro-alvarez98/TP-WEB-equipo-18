@@ -147,6 +147,7 @@ namespace TP_WEB_EQUIPO_18
             // Actualiza el carrito con cada click
             Session["Carrito"] = carrito;
 
+            // creo un objeto master (la Master Page) y llamo a su funcion 
             MasterPage master = (MasterPage)this.Master;
             master.CargarArticulosEnCarrito();
         }
