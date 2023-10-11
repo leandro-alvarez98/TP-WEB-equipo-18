@@ -43,6 +43,7 @@
                                    <p class="card-text"><%= articulo.Descripcion %></p>
                                    <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>"> Ver articulo </a>
                                    <asp:Button ID="btnAceptar" runat="server" Text="Ver Articulo" OnClick="btnAceptar_Click" />
+                                   <asp:Button ID="agregar_a_carrito" runat="server" Text="Agregar a Carrito" OnClick="btnAgregar_Click" />
                                </div>
                            </div>
                        </div>

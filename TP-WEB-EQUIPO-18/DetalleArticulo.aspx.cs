@@ -14,7 +14,7 @@ namespace TP_WEB_EQUIPO_18
     {
         public List<Articulo> listaArticulos { get; set; }
         public Articulo articuloSeleccionado = null;
-
+        private int id;
         private List<Articulo> EncontrarRepetidos()
         {
             var articulosAgregados = new HashSet<int>();
@@ -58,10 +58,12 @@ namespace TP_WEB_EQUIPO_18
         private Articulo CargarComponentes()
         {
             listaArticulos = new List<Articulo>();
-
+            
             ArticuloNegocio negocio = new ArticuloNegocio();
-
-            int id = int.Parse(Request.QueryString["Id"]);
+            if (Request.QueryString["Id"] != null)
+            {
+                id = int.Parse(Request.QueryString["Id"]);
+            }
 
             try
             {
@@ -119,6 +121,15 @@ namespace TP_WEB_EQUIPO_18
             }
 
 
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (articuloSeleccionado != null)
+            {
+                Session.Add("articulo",articuloSeleccionado);
+                Label1.Text = "agregado al carrito";
+            }
         }
     }
 }

@@ -107,6 +107,10 @@ namespace TP_WEB_EQUIPO_18
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
         }
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
         }

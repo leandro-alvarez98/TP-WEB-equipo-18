@@ -4,7 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <h1>DETALLE DEL ARTÍCULO</h1>
-
+    <asp:Button ID="agregar_a_carrito" runat="server" Text="Agregar a Carrito" OnClick="btnAgregar_Click" />
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     <!-- Detalles del artículo -->
     <div class="container">
         <div class="row">
