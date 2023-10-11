@@ -37,6 +37,7 @@ namespace TP_WEB_EQUIPO_18
                 {
                     ListItem listItem = new ListItem($"{item.Nombre} - ${item.Precio} ({item.Cantidad} en carrito)", item.IdArticulo.ToString());
                     DropDownList1.Items.Add(listItem);
+                    
                 }
             }
         }

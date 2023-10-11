@@ -144,8 +144,11 @@ namespace TP_WEB_EQUIPO_18
                 carrito.Add(nuevoItem);
             }
 
-            // Actualiza el carrito
+            // Actualiza el carrito con cada click
             Session["Carrito"] = carrito;
+
+            MasterPage master = (MasterPage)this.Master;
+            master.CargarArticulosEnCarrito();
         }
     }
 }
