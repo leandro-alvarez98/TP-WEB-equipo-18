@@ -14,6 +14,7 @@ namespace TP_WEB_EQUIPO_18
     public partial class Formulario_web1 : System.Web.UI.Page
     {
         public List<Articulo> listaArticulos { get; set; }
+        public List<Articulo> listaFiltrada { get; set; }
         private void CargarComponentes()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -90,20 +91,18 @@ namespace TP_WEB_EQUIPO_18
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Crear una instancia de tu clase CategoriaNegocio
-            CategoriaNegocio negocio = new CategoriaNegocio();
-
-            // Obtener la categoría seleccionada
             string categoriaSeleccionada = ddlCategoria.SelectedItem.Value;
+            string marcaSeleccionada = ddlMarcas.SelectedItem.Value;
 
-            // Obtener las marcas correspondientes a la categoría seleccionada
-            List<Marca> marcas = negocio.ObtenerMarcasPorCategoria(categoriaSeleccionada);
+            listaFiltrada = new List<Articulo>();
 
-            // Configurar el DropDownList de Marcas
-            ddlMarcas.DataTextField = "Descripcion";
-            ddlMarcas.DataValueField = "Id";
-            ddlMarcas.DataSource = marcas;
-            ddlMarcas.DataBind();
+            foreach(Articulo item in listaFiltrada)
+            {
+                if(item.Marca.Descripcion == marcaSeleccionada && item.Categoria.Descripcion == categoriaSeleccionada)
+                {
+                    listaFiltrada.Add(item);
+                }
+            }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)

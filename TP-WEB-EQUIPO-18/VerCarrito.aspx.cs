@@ -6,6 +6,7 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace TP_WEB_EQUIPO_18
 {
@@ -15,25 +16,20 @@ namespace TP_WEB_EQUIPO_18
         public int cantidad_total_articulos = 0;
         public decimal cantidad_total_a_pagar = 0;
         public List<CarritoItem> carrito;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Carrito"] != null)
-                {
+            {
                     carrito = (List<CarritoItem>)Session["Carrito"];
-
-                    cantidad_items = carrito.Count();
-
-                    foreach (CarritoItem item in carrito)
-                    {
-                        cantidad_total_articulos += item.Cantidad;
-                        cantidad_total_a_pagar += item.Cantidad * item.Precio;
-                    }
-                    lblCant_total_articulos.Text = " Total de articulos " + cantidad_total_articulos.ToString();
-                    lblTotal_items.Text = " Total items dentro de la lista " + cantidad_items.ToString();
-                    lblprecio_total.Text = " Total a pagar $" + cantidad_total_a_pagar.ToString();
-
-                }
-               
+                actualizarLabels();
+                
+            }
+            if (!IsPostBack)
+            {
+                Repetidor.DataSource = carrito;
+                Repetidor.DataBind();
+            }
         }
         protected void btnRedirigir_default_Click(object sender, EventArgs e)
         {
@@ -50,9 +46,38 @@ namespace TP_WEB_EQUIPO_18
                     carrito.Remove(itemAEliminar);
                 }
                 Session["Carrito"] = carrito;
+
                 MasterPage master = (MasterPage)this.Master;
                 master.CargarArticulosEnCarrito();
+                actualizarLabels();
+
             }
+        }
+        protected void btnEliminar_Command(object sender, CommandEventArgs e)
+        {
+            String idArticulo = ((System.Web.UI.WebControls.Button)sender).CommandArgument;
+            int ID = int.Parse(idArticulo);
+            EliminarItemDelCarrito(ID);
+        }
+        protected void actualizarLabels()
+        {
+            cantidad_items = 0;
+            cantidad_total_articulos = 0;
+            cantidad_total_a_pagar = 0;
+
+            if(carrito != null)
+            {
+                cantidad_items = carrito.Count();
+
+                foreach (CarritoItem item in carrito)
+                {
+                    cantidad_total_articulos += item.Cantidad;
+                    cantidad_total_a_pagar += item.Cantidad * item.Precio;
+                }
+            }
+            lblCant_total_articulos.Text = " Total de articulos " + cantidad_total_articulos.ToString();
+            lblTotal_items.Text = " Total items dentro de la lista " + cantidad_items.ToString();
+            lblprecio_total.Text = " Total a pagar $" + cantidad_total_a_pagar.ToString();
         }
     }
 }

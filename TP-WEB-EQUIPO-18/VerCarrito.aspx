@@ -16,24 +16,26 @@
         <asp:Button ID="btnRedirigir_default" Cssclass="btn btn-primary" runat="server" OnClick="btnRedirigir_default_Click" Text="Descubrir Productos" />
     <%}
     else {%>
-            <ol class="list-group list-group-numbered">
-            <% foreach (TP_WEB_EQUIPO_18.CarritoItem item in carrito)
-            { %>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold"><%=item.Nombre%></div>
-                        <%=item.Precio %>
-                    </div>
-                    <span class="badge bg-primary rounded-pill"><%=item.Cantidad %></span>
-                </li>
-            <%}%>
-            </ol>
-    <%}%>
+                
+    <asp:Repeater ID="Repetidor" runat="server">
+        <itemTemplate>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">'<%# Eval("Nombre") %>'</div>
+                    '<%# Eval("Precio")%>'
+                </div>
+                <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad")%>'</span>
+                <asp:Button class="btn btn-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
+            </li>
+        </itemTemplate>
+    </asp:Repeater>
 
-    <asp:Label ID="lblCant_total_articulos" runat="server" Text="Label"></asp:Label>
+    <%}%>
     <br />
-    <asp:Label ID="lblTotal_items" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="lblCant_total_articulos" runat="server" Text="Label" Postback = "True"></asp:Label>
     <br />
-    <asp:Label ID="lblprecio_total" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="lblTotal_items" runat="server" Text="Label" Postback = "True"></asp:Label>
+    <br />
+    <asp:Label ID="lblprecio_total" runat="server" Text="Label" Postback = "True"></asp:Label>
 
 </asp:Content>

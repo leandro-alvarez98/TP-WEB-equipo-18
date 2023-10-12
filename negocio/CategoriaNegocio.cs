@@ -47,10 +47,9 @@ namespace negocio
 
             try
             {
-                string consulta = "SELECT Id, Descripcion FROM MARCAS WHERE IdCategorias = @CategoriaId";
+                string consulta = "SELECT Id, Descripcion FROM MARCAS";
 
                 datos.setConsulta(consulta);
-                datos.setParametro("@CategoriaId", categoriaId);
 
                 datos.ejecutarLectura();
 
