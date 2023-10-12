@@ -15,6 +15,10 @@ namespace TP_WEB_EQUIPO_18
     {
         public List<Articulo> listaArticulos { get; set; }
         public List<Articulo> listaFiltrada { get; set; }
+        private string categoriaSeleccionada;
+        private string marcaSeleccionada;
+        protected bool mostrarFiltrado = false;
+
         private void CargarComponentes()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -71,17 +75,18 @@ namespace TP_WEB_EQUIPO_18
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Carga las listas de artículos a mostrar
             CargarComponentes();
-
-            if (!IsPostBack)
+            if(!IsPostBack)
             {
-
-                CategoriaNegocio negocio = new CategoriaNegocio();
-                List<Categoria> categorias = negocio.listar();
+                //Carga las DropDownList
+                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                List<Categoria> categorias = categoriaNegocio.listar();
                 ddlCategoria.DataTextField = "Descripcion";
                 ddlCategoria.DataValueField = "Id";
                 ddlCategoria.DataSource = categorias;
                 ddlCategoria.DataBind();
+                ddlCategoria.Items.Insert(0, new ListItem("<Selecciona Categoria>", "0"));
 
                 MarcaNegocio marcaNegocio = new MarcaNegocio();
                 List<Marca> marcas = marcaNegocio.listar();
@@ -89,47 +94,71 @@ namespace TP_WEB_EQUIPO_18
                 ddlMarcas.DataValueField = "Id";
                 ddlMarcas.DataSource = marcas;
                 ddlMarcas.DataBind();
+                ddlMarcas.Items.Insert(0, new ListItem("<Selecciona Marca>", "0"));
             }
-
-
-
         }
-        private string categoriaSeleccionada;
-        private string marcaSeleccionada;
+        
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             categoriaSeleccionada = ddlCategoria.SelectedValue;
         }
         protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e) { 
             marcaSeleccionada = ddlMarcas.SelectedValue;
-
         }
-        protected bool mostrarFiltrado = false;
+        
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-        
-        listaFiltrada = new List<Articulo>();
-           
-            foreach (Articulo item in listaArticulos)
+            listaFiltrada = new List<Articulo>();
+
+            try
             {
-                if (item.Marca.Descripcion == marcaSeleccionada && item.Categoria.Descripcion == categoriaSeleccionada)
+                //Lista filtrada solo por Marcas
+                if(categoriaSeleccionada == null && marcaSeleccionada != null)
                 {
-                    listaFiltrada.Add(item);
+                    foreach (Articulo item in listaArticulos)
+                    {
+                            if (item.Marca.Id == int.Parse(marcaSeleccionada))
+                            {
+                                listaFiltrada.Add(item);
+                            }
+                    }
+                    mostrarFiltrado = true;
+                }
+
+                //Lista filtrada solo por Categorias
+                else if (categoriaSeleccionada != null && marcaSeleccionada == null)
+                {
+                    foreach (Articulo item in listaArticulos)
+                    {
+                        if (item.Categoria.Id == int.Parse(categoriaSeleccionada))
+                        {
+                            listaFiltrada.Add(item);
+                        }
+                    }
+                    mostrarFiltrado = true;
+                }
+                //Lista filtrada por ambas condiciones
+                else if (categoriaSeleccionada != null && marcaSeleccionada != null)
+                {
+                    foreach (Articulo item in listaArticulos)
+                    {
+                        if (item.Categoria.Id == int.Parse(categoriaSeleccionada) && item.Marca.Id == int.Parse(marcaSeleccionada))
+                        {
+                            listaFiltrada.Add(item);
+                        }
+                    }
+                    mostrarFiltrado = true;
+                }
+                else
+                {
+                    //En caso de que no se haya seleccionado níngun filtro, no cambia la lista a mostrar.
+                    mostrarFiltrado = false;
                 }
             }
-            gridViewArticulos.DataSource = listaFiltrada;
-            gridViewArticulos.DataBind();
-            mostrarFiltrado = true;
-
-        }
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

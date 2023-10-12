@@ -3,97 +3,89 @@
 
 </asp:Content>
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <h1>ComprasWeb (?</h1>
     <p>Esta es la página principal del webform.</p>
 
      <%--FILTRADO--%> 
-
-    
-
     <div class="mb-3">
         <label for="txtCategoria" class="form-label">Categoria</label>
-        <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" ></asp:DropDownList>
+        <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
     </div>
+
     <div class="mb-3">
         <label for="txtMarca" class="form-label">Marca</label>
-        <asp:DropDownList ID="ddlMarcas" Ccclass="form-select" runat="server" OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged" ></asp:DropDownList>
+        <asp:DropDownList ID="ddlMarcas" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged"></asp:DropDownList>
     </div>
-    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
 
-    <asp:GridView ID="gridViewArticulos" runat="server" AutoGenerateColumns="true"></asp:GridView>
+    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" CssClass="btn btn-primary" />
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
-
+        <%-- Decide si mostrar una lista filtrada o la lista completa --%> 
         <% if (mostrarFiltrado)
             {
                 if (listaFiltrada.Count > 0 && listaFiltrada != null)
                 {
                     foreach (dominio.Articulo articulo in listaFiltrada)
                     {
-        %>
-        <div class="col">
-            <div class="card">
-                <img src="<%= articulo.Imagenes[0] %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><%= articulo.Nombre %></h5>
-                    <p class="card-text"><%= articulo.Descripcion %></p>
-                    <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>">Ver artículo </a>
-                    <asp:Button ID="Button1" runat="server" Text="Ver Artículo" OnClick="btnAceptar_Click" />
-                    <asp:Button ID="Button2" runat="server" Text="Agregar a Carrito" OnClick="btnAgregar_Click" />
-                </div>
-            </div>
-        </div>
-        <% }
-            }
+                    %>
+                    <div class="col">
+                        <div class="card">
+                            <img src="<%= articulo.Imagenes[0] %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= articulo.Nombre %></h5>
+                                <p class="card-text"><%= articulo.Descripcion %></p>
+                                <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>">Ver artículo </a>
+                            </div>
+                        </div>
+                    </div>
+                 <% }
+                }
 
-            else
-            {
+                else
+                {
+            %>
+            <h1>No hay artículos filtrados.</h1>
+            <%
+                }
         %>
-        <p>No hay artículos filtrados.</p>
-        <%
-            }
-        %>
-        <%}
+        <% }
             else
             {%>
-        <%  if (listaArticulos.Count > 0 && listaArticulos != null)
-            {
-                //Hashset es como un diccionario, no almacena valores repetidos.
-                var articulosAgregados = new HashSet<int>();
-
-                foreach (dominio.Articulo articulo in listaArticulos)
+            <%  if (listaArticulos.Count > 0 && listaArticulos != null)
                 {
-                    //Aca comprueba si ya se agregó ese ID, o sea si el artículo ya fue cargado en las Cards
-                    if (!articulosAgregados.Contains(articulo.ID))
+                    //Hashset es como un diccionario, no almacena valores repetidos.
+                    var articulosAgregados = new HashSet<int>();
+
+                    foreach (dominio.Articulo articulo in listaArticulos)
                     {
-                        //Como el artículo no está agregado, lo agrega así no se repite.
-                        articulosAgregados.Add(articulo.ID);
-        %>
-        <div class="col">
-            <div class="card">
-                <img src="<%= articulo.Imagenes[0] %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><%= articulo.Nombre %></h5>
-                    <p class="card-text"><%= articulo.Descripcion %></p>
-                    <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>">Ver articulo </a>
-                    <asp:Button ID="btnAceptar" runat="server" Text="Ver Articulo" OnClick="btnAceptar_Click" />
-                    <asp:Button ID="agregar_a_carrito" runat="server" Text="Agregar a Carrito" OnClick="btnAgregar_Click" />
-                </div>
-            </div>
-        </div>
-        <%
+                        //Aca comprueba si ya se agregó ese ID, o sea si el artículo ya fue cargado en las Cards
+                        if (!articulosAgregados.Contains(articulo.ID))
+                        {
+                            //Como el artículo no está agregado, lo agrega así no se repite.
+                            articulosAgregados.Add(articulo.ID);
+                            %>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="<%= articulo.Imagenes[0] %>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= articulo.Nombre %></h5>
+                                        <p class="card-text"><%= articulo.Descripcion %></p>
+                                        <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>">Ver articulo </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <%
+                        }
                     }
                 }
-            }
-            else
-            {
-        %>
-        <p>No hay artículos disponibles.</p>
-        <%
+                else
+                {
+                    %>
+                    <h1>No hay artículos disponibles.</h1>
+                    <%
                 }
             }
         %>
