@@ -94,21 +94,22 @@ namespace TP_WEB_EQUIPO_18
 
 
         }
-
+        private string categoriaSeleccionada;
+        private string marcaSeleccionada;
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string categoriaSeleccionada = ddlCategoria.SelectedValue;
+            categoriaSeleccionada = ddlCategoria.SelectedValue;
         }
         protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e) { 
-            string marcaSeleccionada = ddlMarcas.SelectedValue;
+            marcaSeleccionada = ddlMarcas.SelectedValue;
 
         }
-
+        protected bool mostrarFiltrado = false;
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            listaFiltrada = new List<Articulo>();
-            string categoriaSeleccionada = ddlCategoria.SelectedValue;
-            string marcaSeleccionada = ddlMarcas.SelectedValue;
+        
+        listaFiltrada = new List<Articulo>();
+           
             foreach (Articulo item in listaArticulos)
             {
                 if (item.Marca.Descripcion == marcaSeleccionada && item.Categoria.Descripcion == categoriaSeleccionada)
@@ -116,7 +117,9 @@ namespace TP_WEB_EQUIPO_18
                     listaFiltrada.Add(item);
                 }
             }
-
+            gridViewArticulos.DataSource = listaFiltrada;
+            gridViewArticulos.DataBind();
+            mostrarFiltrado = true;
 
         }
         protected void btnAgregar_Click(object sender, EventArgs e)
