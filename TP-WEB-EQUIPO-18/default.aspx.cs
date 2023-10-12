@@ -82,7 +82,13 @@ namespace TP_WEB_EQUIPO_18
                 ddlCategoria.DataValueField = "Id";
                 ddlCategoria.DataSource = categorias;
                 ddlCategoria.DataBind();
-                //CargarMarcas();
+
+                MarcaNegocio marcaNegocio = new MarcaNegocio();
+                List<Marca> marcas = marcaNegocio.listar();
+                ddlMarcas.DataTextField = "Descripcion";
+                ddlMarcas.DataValueField = "Id";
+                ddlMarcas.DataSource = marcas;
+                ddlMarcas.DataBind();
             }
 
 
@@ -91,20 +97,28 @@ namespace TP_WEB_EQUIPO_18
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string categoriaSeleccionada = ddlCategoria.SelectedItem.Value;
-            string marcaSeleccionada = ddlMarcas.SelectedItem.Value;
+            string categoriaSeleccionada = ddlCategoria.SelectedValue;
+        }
+        protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e) { 
+            string marcaSeleccionada = ddlMarcas.SelectedValue;
 
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
             listaFiltrada = new List<Articulo>();
-
-            foreach(Articulo item in listaFiltrada)
+            string categoriaSeleccionada = ddlCategoria.SelectedValue;
+            string marcaSeleccionada = ddlMarcas.SelectedValue;
+            foreach (Articulo item in listaArticulos)
             {
-                if(item.Marca.Descripcion == marcaSeleccionada && item.Categoria.Descripcion == categoriaSeleccionada)
+                if (item.Marca.Descripcion == marcaSeleccionada && item.Categoria.Descripcion == categoriaSeleccionada)
                 {
                     listaFiltrada.Add(item);
                 }
             }
-        }
 
+
+        }
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 

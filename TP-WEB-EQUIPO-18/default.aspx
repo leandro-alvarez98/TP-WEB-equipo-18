@@ -11,15 +11,18 @@
 
      <%--FILTRADO--%> 
 
+    <%--<asp:GridView ID="GridViewArticulos" runat="server" AutoGenerateColumns="true">
+</asp:GridView>--%>
+
     <div class="mb-3">
         <label for="txtCategoria" class="form-label">Categoria</label>
-        <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>
+        <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" ></asp:DropDownList>
     </div>
     <div class="mb-3">
         <label for="txtMarca" class="form-label">Marca</label>
-        <asp:DropDownList ID="ddlMarcas" ccclass="form-select" runat="server" ></asp:DropDownList>
+        <asp:DropDownList ID="ddlMarcas" Ccclass="form-select" runat="server" OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged" ></asp:DropDownList>
     </div>
-    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnAgregar_Click" />
+    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" />
 
 
         <div class="row row-cols-1 row-cols-md-3 g-4">

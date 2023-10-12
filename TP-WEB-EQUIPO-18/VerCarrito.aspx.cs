@@ -37,21 +37,18 @@ namespace TP_WEB_EQUIPO_18
         }
         protected void EliminarItemDelCarrito(int ID)
         {
-            if (carrito != null)
+            CarritoItem itemAEliminar = carrito.FirstOrDefault(item => item.ID == ID);
+
+            if (itemAEliminar != null)
             {
-                CarritoItem itemAEliminar = carrito.FirstOrDefault(item => item.ID == ID);
-
-                if (itemAEliminar != null)
-                {
-                    carrito.Remove(itemAEliminar);
-                }
-                Session["Carrito"] = carrito;
-
-                MasterPage master = (MasterPage)this.Master;
-                master.CargarArticulosEnCarrito();
-                actualizarLabels();
-
+                carrito.Remove(itemAEliminar);
             }
+            Session["Carrito"] = carrito;
+
+            MasterPage master = (MasterPage)this.Master;
+            master.CargarArticulosEnCarrito();
+            actualizarLabels();
+
         }
         protected void btnEliminar_Command(object sender, CommandEventArgs e)
         {
