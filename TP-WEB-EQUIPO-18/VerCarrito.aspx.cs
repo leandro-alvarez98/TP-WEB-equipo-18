@@ -41,7 +41,15 @@ namespace TP_WEB_EQUIPO_18
 
             if (itemAEliminar != null)
             {
-                carrito.Remove(itemAEliminar);
+                if (itemAEliminar.Cantidad > 1)
+                {
+                    itemAEliminar.Cantidad += -1;
+                }
+                else if (itemAEliminar.Cantidad == 1)
+                {
+                    carrito.Remove(itemAEliminar);
+
+                }
             }
             Session["Carrito"] = carrito;
 
