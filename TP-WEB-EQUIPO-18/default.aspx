@@ -18,6 +18,7 @@
     </div>
 
     <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" CssClass="btn btn-primary" />
+    <asp:Button ID="btnLimpiarFiltro" runat="server" Text="Limpiar filtro" OnClick="btnLimpiarFiltro_Click" CssClass="btn btn-primary" />
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 

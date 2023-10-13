@@ -86,7 +86,9 @@ namespace TP_WEB_EQUIPO_18
                 ddlCategoria.DataValueField = "Id";
                 ddlCategoria.DataSource = categorias;
                 ddlCategoria.DataBind();
-                ddlCategoria.Items.Insert(0, new ListItem("<Selecciona Categoria>", "0"));
+                //ddlCategoria.Items.Insert(0, new ListItem("<Selecciona Categoria>", ""));
+                ddlCategoria.Items.Insert(0, new ListItem("<Selecciona Categoria>", string.Empty));
+
 
                 MarcaNegocio marcaNegocio = new MarcaNegocio();
                 List<Marca> marcas = marcaNegocio.listar();
@@ -94,7 +96,9 @@ namespace TP_WEB_EQUIPO_18
                 ddlMarcas.DataValueField = "Id";
                 ddlMarcas.DataSource = marcas;
                 ddlMarcas.DataBind();
-                ddlMarcas.Items.Insert(0, new ListItem("<Selecciona Marca>", "0"));
+                //ddlMarcas.Items.Insert(0, new ListItem("<Selecciona Marca>", ""));
+                ddlMarcas.Items.Insert(0, new ListItem("<Selecciona Marca>", string.Empty));
+
             }
         }
         
@@ -105,7 +109,10 @@ namespace TP_WEB_EQUIPO_18
         protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e) { 
             marcaSeleccionada = ddlMarcas.SelectedValue;
         }
-        
+        protected void btnLimpiarFiltro_Click(object sender, EventArgs e) {
+            ddlCategoria.SelectedIndex = 0;
+            ddlMarcas.SelectedIndex = 0;
+        }
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
             listaFiltrada = new List<Articulo>();
@@ -113,14 +120,14 @@ namespace TP_WEB_EQUIPO_18
             try
             {
                 //Lista filtrada solo por Marcas
-                if(categoriaSeleccionada == null && marcaSeleccionada != null)
+                if (categoriaSeleccionada == null && marcaSeleccionada != null)
                 {
                     foreach (Articulo item in listaArticulos)
                     {
-                            if (item.Marca.Id == int.Parse(marcaSeleccionada))
-                            {
-                                listaFiltrada.Add(item);
-                            }
+                        if (item.Marca.Id == int.Parse(marcaSeleccionada))
+                        {
+                            listaFiltrada.Add(item);
+                        }
                     }
                     mostrarFiltrado = true;
                 }
@@ -149,10 +156,14 @@ namespace TP_WEB_EQUIPO_18
                     }
                     mostrarFiltrado = true;
                 }
+                else if (string.IsNullOrEmpty(categoriaSeleccionada) && string.IsNullOrEmpty(marcaSeleccionada)) {
+                    //MessageBox.Show("No se han seleccionado filtros.");
+                    mostrarFiltrado = false;
+                }
                 else
                 {
                     //En caso de que no se haya seleccionado níngun filtro, no cambia la lista a mostrar.
-                    mostrarFiltrado = false;
+                    //mostrarFiltrado = false;
                 }
             }
             catch(Exception ex)
