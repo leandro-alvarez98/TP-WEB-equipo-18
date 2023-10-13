@@ -6,56 +6,59 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     
     <title>Carrito de Compras!</title>
-
     <!--Bootstrap CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-   <!--Bootstrap JS-->
+    <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <link rel="stylesheet"  href="Estilos.css" />
-
+    <!--Estilos propios-->
+    <link href="Estilos.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
             <!--INICIO NAV-->
             <nav class="navbar bg-body-tertiary">
               <div class="container-fluid">
                 <a class="navbar-brand" href="Default.aspx">
                   <img src="Imagenes/icons8-centro-comercial-50.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                  E-Commerce
+                  E-Commerce 
                 </a>
-
                   <!-- Carrito de compras -->
-                  <asp:DropDownList ID="DropDownList1" CssClass="btn btn-secondary dropdown-toggle" runat="server">
-                  
-                  </asp:DropDownList>
-                  <%--icono--%>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" OnClick="btn_vercarrito_Click" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
+                  <asp:DropDownList ID="DropDownList1" CssClass="btn btn-secondary dropdown-toggle" runat="server"></asp:DropDownList>
+                  <!-- Icono -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" onclick="btn_vercarrito_Click" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                       <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                       <span class="position-absolute top-1 start-110 translate-middle badge rounded-pill bg-danger">
                           <%=articulos_totales %>
-                         <span class="visually-hidden">unread messages</span>
+                         <span class="visually-hidden"></span>
                       </span>
                   </svg>
-               <asp:Button ID="btn_vercarrito" runat="server" OnClick="btn_vercarrito_Click" Text="Ver Carrito" />
-                   
-               
-
+               <!-- Botón del carrito -->
+               <asp:Button ID="btn_vercarrito" runat="server" OnClick="btn_vercarrito_Click" Text="Ver Carrito" CssClass ="btn btn-warning"/>
               </div>
             </nav>
             <!--FIN NAV-->
             <div class="container">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
-        </div>
     </form>
     <!--INICIO FOOTER-->
-    <hr />
-    <footer>WebForm Equipo 18, 10/2023</footer>
-    <!--INICIO FOOTER-->
+    <footer class="footer py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-dark">Equipo 18</h5>
+                    <p class="text-muted">Integrantes: Leandro Álvarez, Facundo Sánchez y Esteban Curcio</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-dark">Repositorio de la web:</h5>
+                    <a href="https://github.com/leandro-alvarez98/tp-winform-equipo-18" class="text-muted">TP_WEB_EQUIPO_18 en GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--FIN FOOTER-->
 </body>
 </html>

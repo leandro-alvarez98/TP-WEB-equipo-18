@@ -5,9 +5,6 @@
 
     <h1>DETALLE DEL ARTÍCULO</h1>
 
-
-    
-
     <!-- Detalles del artículo -->
     <div class="container">
         <div class="row">
@@ -24,50 +21,50 @@
                 </div>
             </div>
 
-     <!-- Carrusel con imágenes -->
+            <!-- Carrusel con imágenes -->
             <% if (articuloSeleccionado != null && articuloSeleccionado.Imagenes.Count > 0)
-                {
+               {
             %>
-            <div class="col-md-8">
-                <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                <div class="col-md-8">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade">
 
-                    <div class="carousel-inner">
-                        <!-- Recorre todas las imágenes -->
-                        <% for (int i = 0; i < articuloSeleccionado.Imagenes.Count; i++)
-                            {
-                                //Url de la imágen actual
-                                string urlimagen = articuloSeleccionado.Imagenes[i];
-                                //Comprueba si la imágen actual es la primera en la lista
-                                bool esActiva = (i == 0);
-                        %>
-                        <div class="carousel-item <%= esActiva ? "active" : "" %>">
-                            <img id="imagenCarrusel" data-indice="<%= i %>" src="<%= urlimagen %>" class="d-block mx-auto" alt="...">
+                        <div class="carousel-inner">
+                            <!-- Recorre todas las imágenes -->
+                            <% for (int i = 0; i < articuloSeleccionado.Imagenes.Count; i++)
+                               {
+                                    //Url de la imágen actual
+                                    string urlimagen = articuloSeleccionado.Imagenes[i];
+                                    //Comprueba si la imágen actual es la primera en la lista
+                                    bool esActiva = (i == 0);
+                            %>
+                                    <div class="carousel-item <%= esActiva ? "active" : "" %>" style="max-width: 70%;">
+                                        <img id="imagenCarrusel" data-indice="<%= i %>" src="<%= urlimagen %>" class="d-block mx-auto" style="max-width: 100%;" alt="...">
+                                    </div>
+                            <% } %>
                         </div>
-                        <% } %>
-                    </div>
-                    <!-- Botón imagen previa -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <!-- Botón imagen siguiente -->
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                        <!-- Botón imagen previa -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <!-- Botón imagen siguiente -->
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
 
+                    </div>
                 </div>
-            </div>
+            <% } %>
+            <%
+                else
+                {%>
+                    <img src="https://sportshub.cbsistatic.com/i/2022/08/20/184ad631-2e9c-419c-bf75-9c288db1610e/rick-astley-never-gonna-give-you-up-meme.jpg" class="card-img-top" alt="...">
+             <% } %>
         </div>
     </div>
-    <% }
-    else
-    { %>
-       <img src="https://sportshub.cbsistatic.com/i/2022/08/20/184ad631-2e9c-419c-bf75-9c288db1610e/rick-astley-never-gonna-give-you-up-meme.jpg" class="card-img-top" alt="...">
-    <% } %>
 
       <asp:Button ID="agregar_a_carrito" CssClass="btn btn-secondary" runat="server" Text="Agregar al Carrito" OnClick="btnAgregar_Click" />
-
 
     <!--Este código cambia la imágen en base al botón que apretemos -->
     <!--Botón siguiente: -->
@@ -118,6 +115,4 @@
             });
         });
     </script>
-
-
 </asp:Content>
