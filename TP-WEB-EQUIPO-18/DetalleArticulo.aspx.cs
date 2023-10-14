@@ -118,7 +118,8 @@ namespace TP_WEB_EQUIPO_18
         {
             int ID = articuloSeleccionado.ID;
             string NOMBRE = articuloSeleccionado.Nombre; 
-            decimal PRECIO = articuloSeleccionado.Precio; 
+            decimal PRECIO = articuloSeleccionado.Precio;
+            string IMAGEN = articuloSeleccionado.Imagenes[0];
 
             // Verifica si el artículo ya está en el carrito
             List<CarritoItem> carrito = (List<CarritoItem>)Session["Carrito"];
@@ -137,6 +138,7 @@ namespace TP_WEB_EQUIPO_18
                 nuevoItem.ID = ID;
                 nuevoItem.Nombre = NOMBRE;
                 nuevoItem.Precio = PRECIO;
+                nuevoItem.Imagen = IMAGEN;
                 nuevoItem.Cantidad = 1;
                 carrito.Add(nuevoItem);
             }

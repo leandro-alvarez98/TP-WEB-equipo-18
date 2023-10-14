@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -21,7 +22,7 @@ namespace TP_WEB_EQUIPO_18
         {
             if (Session["Carrito"] != null)
             {
-                    carrito = (List<CarritoItem>)Session["Carrito"];
+                carrito = (List<CarritoItem>)Session["Carrito"];
                 actualizarLabels();
                 
             }
@@ -56,7 +57,6 @@ namespace TP_WEB_EQUIPO_18
             MasterPage master = (MasterPage)this.Master;
             master.CargarArticulosEnCarrito();
             actualizarLabels();
-
         }
         protected void btnEliminar_Command(object sender, CommandEventArgs e)
         {

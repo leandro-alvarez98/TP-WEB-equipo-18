@@ -16,24 +16,38 @@
     <%}
     else 
     {
-    %>  
+    %>
         <asp:Repeater ID="Repetidor" runat="server">
-            <itemTemplate>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">'<%# Eval("Nombre") %>'</div>
-                        '<%# Eval("Precio")%>'
+            <ItemTemplate>
+                <li class="list-group-item d-flex justify-content-between align-items-start" style="padding-top: 15px;">
+                    <!-- Cuadrado con la imagen (a la izquierda) -->
+                    <div class="imagen-articulo" style="max-width: 10%;">
+                        <img src='<%# Eval("Imagen") %>' alt='<%# Eval("Nombre") %>' />
                     </div>
-                    <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad")%>'</span>
+                    <!-- Detalles del artículo (a la derecha) -->
+                    <div class="ms-2">
+                        <div class="fw-bold">
+                            '<%# Eval("Nombre") %>'
+                        </div>
+                        '<%# Eval("Precio") %>'
+                    </div>
+                    <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
                     <asp:Button class="btn btn-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
                 </li>
-            </itemTemplate>
+                <hr />
+            </ItemTemplate>
         </asp:Repeater>
   <%}%>
     <br />
-    <asp:Label ID="lblCant_total_articulos" runat="server" Text="Label" Postback = "True"></asp:Label>
+    <h5>
+        <asp:Label ID="lblCant_total_articulos" runat="server" Text="Label" Postback = "True"></asp:Label>
+    </h5>
     <br />
-    <asp:Label ID="lblTotal_items" runat="server" Text="Label" Postback = "True"></asp:Label>
+    <h5>
+        <asp:Label ID="lblTotal_items" runat="server" Text="Label" Postback = "True"></asp:Label>
+    </h5>
     <br />
-    <asp:Label ID="lblprecio_total" runat="server" Text="Label" Postback = "True"></asp:Label>
+    <h5>
+        <asp:Label ID="lblprecio_total" runat="server" Text="Label" Postback = "True"></asp:Label>
+    </h5>
 </asp:Content>

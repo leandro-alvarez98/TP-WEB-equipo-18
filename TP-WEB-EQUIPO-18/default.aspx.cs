@@ -160,15 +160,10 @@ namespace TP_WEB_EQUIPO_18
                     //MessageBox.Show("No se han seleccionado filtros.");
                     mostrarFiltrado = false;
                 }
-                else
-                {
-                    //En caso de que no se haya seleccionado níngun filtro, no cambia la lista a mostrar.
-                    //mostrarFiltrado = false;
-                }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Hubo un error, por favor asegurese de limpiar los filtros! -Soporte del equipo 18 ;)");
             }
         }
     }
