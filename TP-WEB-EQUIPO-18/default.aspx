@@ -3,24 +3,30 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <h1>ComprasWeb</h1>
-    <p>Tu destino para descubrir, elegir y comprar</p>
-
+    <br />
+    <h1> ComprasWeb </h1>
+    <h4>  Tu destino para descubrir, elegir y comprar 
+        <img src="Imagenes/icons8-me-gusta-30.png" />
+    </h4>
+    <br />
      <%--FILTRADO--%> 
     <div class="mb-3">
-        <label for="txtCategoria" class="form-label">Categoria</label>
+        <h5>
+            <label for="txtCategoria" class="form-label">Categoria</label>
+        </h5>
         <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
     </div>
 
     <div class="mb-3">
-        <label for="txtMarca" class="form-label">Marca</label>
+        <h5>
+            <label for="txtMarca" class="form-label">Marca</label>
+        </h5>
         <asp:DropDownList ID="ddlMarcas" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged"></asp:DropDownList>
     </div>
 
     <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" CssClass="btn btn-primary" />
     <asp:Button ID="btnLimpiarFiltro" runat="server" Text="Limpiar filtro" OnClick="btnLimpiarFiltro_Click" CssClass="btn btn-primary" />
-
+    <hr />
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
         <%-- Decide si mostrar una lista filtrada o la lista completa --%> 
@@ -43,18 +49,17 @@
                     </div>
                  <% }
                 }
-
                 else
                 {
-            %>
-            <h1>No hay artículos filtrados.</h1>
-            <%
+                    %>
+                    <h1>No hay artículos filtrados.</h1>
+                    <%
                 }
         %>
         <% }
             else
-            {%>
-            <%  if (listaArticulos.Count > 0 && listaArticulos != null)
+            {  
+                if (listaArticulos.Count > 0 && listaArticulos != null)
                 {
                     //Hashset es como un diccionario, no almacena valores repetidos.
                     var articulosAgregados = new HashSet<int>();

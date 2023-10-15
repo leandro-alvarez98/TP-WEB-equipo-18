@@ -71,6 +71,7 @@
     <Content Include="Imagenes\icons8-centro-comercial-50.png" />
     <Content Include="DetalleArticulo.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\icons8-me-gusta-30.png" />
     <Content Include="VerCarrito.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
