@@ -17,7 +17,7 @@
     else 
     {
     %> <%-- Listado del carrito de compras (aca se dibujas y ordenan)--%>
-        <asp:Repeater ID="Repetidor" runat="server" >
+        <asp:Repeater ID="Repetidor" runat="server">
             <ItemTemplate>
                 <li class="list-group-item d-flex justify-content-between align-items-start" style="padding-top: 15px;">
                     <!-- Cuadrado con la imagen (a la izquierda) -->
@@ -31,12 +31,13 @@
                         </div>
                         '<%# Eval("Precio") %>'
                     </div>
-                    <span  class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
+                    <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
                     <asp:Button class="btn btn-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
                 </li>
                 <hr />
             </ItemTemplate>
         </asp:Repeater>
+
   <%}%>
     <br />
     <h5>

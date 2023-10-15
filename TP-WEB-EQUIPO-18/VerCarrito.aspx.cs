@@ -26,15 +26,17 @@ namespace TP_WEB_EQUIPO_18
                 {
                     carrito = (List<CarritoItem>)Session["Carrito"];
                     actualizarLabels();
-                   
-                    
                 }
+                else
+                {
+                    carrito = new List<CarritoItem>();
+                }
+
                 if (!IsPostBack)
                 {
                     Repetidor.DataSource = carrito;
-                    Repetidor.DataBind();
+                    actualizarRepeater();
                 }
-
             }
             catch (Exception ex)
             {
@@ -63,16 +65,23 @@ namespace TP_WEB_EQUIPO_18
                 }
             }
             Session["Carrito"] = carrito;
-
-            MasterPage master = (MasterPage)this.Master;
-            master.CargarArticulosEnCarrito();
-            actualizarLabels();
         }
         protected void btnEliminar_Command(object sender, CommandEventArgs e)
         {
             String idArticulo = ((System.Web.UI.WebControls.Button)sender).CommandArgument;
             int ID = int.Parse(idArticulo);
             EliminarItemDelCarrito(ID);
+            MasterPage master = (MasterPage)this.Master;
+            master.CargarArticulosEnCarrito();
+            actualizarLabels();
+            actualizarRepeater();
+            // Agregar la siguiente línea para redirigir y recargar la página
+            Response.Redirect(Request.RawUrl);
+        }
+
+        private void actualizarRepeater()
+        {
+            Repetidor.DataBind();
         }
         protected void actualizarLabels()
         {
@@ -93,9 +102,6 @@ namespace TP_WEB_EQUIPO_18
             lblCant_total_articulos.Text = " Total de articulos " + cantidad_total_articulos.ToString();
             lblTotal_items.Text = " Total items dentro de la lista " + cantidad_items.ToString();
             lblprecio_total.Text = " Total a pagar $" + cantidad_total_a_pagar.ToString();
-
-           
-
         }
 
         protected void btnComprar_Click(object sender, EventArgs e)
