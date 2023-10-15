@@ -20,16 +20,26 @@ namespace TP_WEB_EQUIPO_18
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Carrito"] != null)
+            try
             {
-                carrito = (List<CarritoItem>)Session["Carrito"];
-                actualizarLabels();
-                
+                if (Session["Carrito"] != null)
+                {
+                    carrito = (List<CarritoItem>)Session["Carrito"];
+                    actualizarLabels();
+                   
+                    
+                }
+                if (!IsPostBack)
+                {
+                    Repetidor.DataSource = carrito;
+                    Repetidor.DataBind();
+                }
+
             }
-            if (!IsPostBack)
+            catch (Exception ex)
             {
-                Repetidor.DataSource = carrito;
-                Repetidor.DataBind();
+                MessageBox.Show(ex.ToString());
+                throw;
             }
         }
         protected void btnRedirigir_default_Click(object sender, EventArgs e)
@@ -83,6 +93,14 @@ namespace TP_WEB_EQUIPO_18
             lblCant_total_articulos.Text = " Total de articulos " + cantidad_total_articulos.ToString();
             lblTotal_items.Text = " Total items dentro de la lista " + cantidad_items.ToString();
             lblprecio_total.Text = " Total a pagar $" + cantidad_total_a_pagar.ToString();
+
+           
+
+        }
+
+        protected void btnComprar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Compra_realizada.aspx");
         }
     }
 }

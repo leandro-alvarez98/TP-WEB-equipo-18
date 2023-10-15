@@ -6,7 +6,7 @@
     <h1>Carrito de compras</h1>
 
     <%--titulo imagen y boton por si no hay objetos en el carrito--%>
-    <%if(carrito.Count() == 0)
+    <%if(carrito.Count() == 0 )
       {%>
         <h1 id="empeza_el_carrito" runat="server">¡Empieza un carrito de compras!</h1>
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-bag-x-fill" viewBox="0 0 16 16">
@@ -16,8 +16,8 @@
     <%}
     else 
     {
-    %>
-        <asp:Repeater ID="Repetidor" runat="server">
+    %> <%-- Listado del carrito de compras (aca se dibujas y ordenan)--%>
+        <asp:Repeater ID="Repetidor" runat="server" >
             <ItemTemplate>
                 <li class="list-group-item d-flex justify-content-between align-items-start" style="padding-top: 15px;">
                     <!-- Cuadrado con la imagen (a la izquierda) -->
@@ -31,7 +31,7 @@
                         </div>
                         '<%# Eval("Precio") %>'
                     </div>
-                    <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
+                    <span  class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
                     <asp:Button class="btn btn-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
                 </li>
                 <hr />
@@ -48,6 +48,10 @@
     </h5>
     <br />
     <h5>
-        <asp:Label ID="lblprecio_total" runat="server" Text="Label" Postback = "True"></asp:Label>
+        <asp:Label ID="lblprecio_total"  runat="server" Text="Label" Postback = "True"  ></asp:Label>
     </h5>
+
+    <asp:Button ID="btnComprar" Cssclass="btn btn-primary" OnClick="btnComprar_Click" runat="server" Text="comprar" />
+
 </asp:Content>
+

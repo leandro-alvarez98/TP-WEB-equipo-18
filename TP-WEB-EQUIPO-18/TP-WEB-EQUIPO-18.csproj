@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Compra_realizada.aspx" />
     <Content Include="Estilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="Imagenes\icons8-centro-comercial-50.png" />
@@ -74,6 +75,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compra_realizada.aspx.cs">
+      <DependentUpon>Compra_realizada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compra_realizada.aspx.designer.cs">
+      <DependentUpon>Compra_realizada.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
