@@ -29,45 +29,49 @@
     else 
     {
     %> <%-- Listado del carrito de compras (aca se dibujas y ordenan)--%>
-        <asp:Repeater ID="Repetidor" runat="server">
-            <ItemTemplate>
-                <li class="list-group-item d-flex justify-content-between align-items-start" style="padding-top: 15px;">
-                    <!-- Cuadrado con la imagen (a la izquierda) -->
-                    <div class="imagen-articulo" style="max-width: 10%;">
-                        <img src='<%# Eval("Imagen") %>' alt='<%# Eval("Nombre") %>' />
+ <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <asp:Repeater ID="Repetidor" runat="server">
+                    <ItemTemplate>
+                        <li class="list-group-item d-flex justify-content-between align-items-start" style="padding-top: 15px;">
+                            <!-- Cuadrado con la imagen (a la izquierda) -->
+                            <div class="imagen-articulo" style="max-width: 10%;">
+                                <img src='<%# Eval("Imagen") %>' alt='<%# Eval("Nombre") %>' />
+                            </div>
+                            <!-- Detalles del artículo (a la derecha) -->
+                            <div class="ms-2">
+                                <div class="fw-bold">
+                                    '<%# Eval("Nombre") %>'
+                                </div>
+                                '<%# Eval("Precio") %>'
+                            </div>
+                            <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
+                            <asp:Button class="btn btn-outline-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
+                        </li>
+                        <hr />
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="background-color: darkgray;">
+                    <div class="card-body">
+                        <h5 class="card-title">Resumen de compra</h5>
+                        <asp:Label ID="lblCant_total_articulos" runat="server" Text=""></asp:Label>
+                        <br />
+                        <asp:Label ID="lblprecio_total" runat="server" Text=""></asp:Label>
+                        <br />
+                        <br />
+                        <% if (carrito.Count() > 0)
+                        { %>
+                            <asp:Button ID="btnComprar" class="btn btn-outline-secondary" OnClick="btnComprar_Click" runat="server" Text="Comprar" />
+                        <%} %>
                     </div>
-                    <!-- Detalles del artículo (a la derecha) -->
-                    <div class="ms-2">
-                        <div class="fw-bold">
-                            '<%# Eval("Nombre") %>'
-                        </div>
-                        '<%# Eval("Precio") %>'
-                    </div>
-                    <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
-                    <asp:Button class="btn btn-outline-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
-                </li>
-                <hr />
-            </ItemTemplate>
-        </asp:Repeater>
-
-   <%-- card con detalles de la compra--%>
-        <div class="card" style="width: 18rem; background-color: darkgray;">
-            <div class="card-body">
-                <h5 class="card-title">Resumen de compra</h5>
-                <asp:Label ID="lblCant_total_articulos"  runat="server" Text="" Postback = "True"></asp:Label>
-                <br />
-                <asp:Label ID="lblprecio_total"  runat="server" Text="" Postback = "True"  ></asp:Label>
+                </div>
             </div>
         </div>
-
+     </div>
   <%}%>
 
-    <br />
-    <br />
- 
-    <%if(carrito.Count() > 0)
-      { %>
-    <asp:Button ID="btnComprar" class="btn btn-outline-secondary" OnClick="btnComprar_Click" runat="server" Text="Comprar" />
-    <%}%>
 </asp:Content>
 
