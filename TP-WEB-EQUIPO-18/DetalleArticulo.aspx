@@ -6,12 +6,12 @@
     <h1>DETALLE DEL ARTÍCULO</h1>
 
     <!-- Detalles del artículo -->
-    <div class="container">
+    <div class="container" background-color: darkgray;" >
         <div class="row">
             <div class="col-md-4">
-                <div class="card border-dark mb-3">
+                <div  class="card border-dark mb-3">
                     <div class="card-header">#<%= articuloSeleccionado.Codigo %> </div>
-                    <div class="card-body">
+                    <div class="card-body" >
                         <h5 class="card-title"><%=articuloSeleccionado.Nombre %></h5>
                         <p class="card-text"><%=articuloSeleccionado.Descripcion %></p>
                         <p class="card-text">Precio: $<%=articuloSeleccionado.Precio %></p>

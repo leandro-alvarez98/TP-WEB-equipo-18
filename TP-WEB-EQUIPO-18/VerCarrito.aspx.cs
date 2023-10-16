@@ -99,9 +99,8 @@ namespace TP_WEB_EQUIPO_18
                     cantidad_total_a_pagar += item.Cantidad * item.Precio;
                 }
             }
-            lblCant_total_articulos.Text = " Total de articulos " + cantidad_total_articulos.ToString();
-            lblTotal_items.Text = " Total items dentro de la lista " + cantidad_items.ToString();
-            lblprecio_total.Text = " Total a pagar $" + cantidad_total_a_pagar.ToString();
+            lblCant_total_articulos.Text = " Total de articulos  " + cantidad_total_articulos.ToString();
+            lblprecio_total.Text = " Total $" + cantidad_total_a_pagar.ToString();
         }
 
         protected void btnComprar_Click(object sender, EventArgs e)

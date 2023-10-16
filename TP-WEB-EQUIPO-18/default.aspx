@@ -4,28 +4,28 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
-    <h1> ComprasWeb </h1>
-    <h4>  Tu destino para descubrir, elegir y comprar 
+    <h1 style="color:#4E5861"> ComprasWeb </h1>
+    <h4 style="color:#4E5861">  Tu destino para descubrir, elegir y comprar 
         <img src="Imagenes/icons8-me-gusta-30.png" />
     </h4>
     <br />
      <%--FILTRADO--%> 
     <div class="mb-3">
         <h5>
-            <label for="txtCategoria" class="form-label">Categoria</label>
+            <label for="txtCategoria" style="color:#4E5861" class="form-label">Categoria</label>
         </h5>
         <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged"></asp:DropDownList>
     </div>
 
     <div class="mb-3">
         <h5>
-            <label for="txtMarca" class="form-label">Marca</label>
+            <label for="txtMarca" style="color:#4E5861" class="form-label">Marca</label>
         </h5>
         <asp:DropDownList ID="ddlMarcas" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged"></asp:DropDownList>
     </div>
 
-    <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" CssClass="btn btn-primary" />
-    <asp:Button ID="btnLimpiarFiltro" runat="server" Text="Limpiar filtro" OnClick="btnLimpiarFiltro_Click" CssClass="btn btn-primary" />
+    <asp:Button ID="btnFiltrar" class="btn btn-outline-secondary"  runat="server" Text="Filtrar" OnClick="btnFiltrar_Click"  />
+    <asp:Button ID="btnLimpiarFiltro" class="btn btn-outline-secondary" runat="server" Text="Limpiar filtro" OnClick="btnLimpiarFiltro_Click"  />
     <hr />
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -78,7 +78,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><%= articulo.Nombre %></h5>
                                         <p class="card-text"><%= articulo.Descripcion %></p>
-                                        <a href="DetalleArticulo.aspx?Id=<%: articulo.ID %>">Ver articulo </a>
+                                        <a class="btn btn-outline-secondary"  role="button" href="DetalleArticulo.aspx?Id=<%: articulo.ID %>">Ver articulo </a>
                                     </div>
                                 </div>
                             </div>
