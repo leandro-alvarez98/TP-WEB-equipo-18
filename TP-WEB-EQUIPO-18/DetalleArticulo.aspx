@@ -3,15 +3,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1>DETALLE DEL ARTÍCULO</h1>
+    <h1 style="color:#4E5861">DETALLE DEL ARTÍCULO</h1>
 
     <!-- Detalles del artículo -->
-    <div class="container" background-color: darkgray;" >
+    <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div  class="card border-dark mb-3">
+                <div class="card border-dark mb-3">
                     <div class="card-header">#<%= articuloSeleccionado.Codigo %> </div>
-                    <div class="card-body" >
+                    <div class="card-body">
                         <h5 class="card-title"><%=articuloSeleccionado.Nombre %></h5>
                         <p class="card-text"><%=articuloSeleccionado.Descripcion %></p>
                         <p class="card-text">Precio: $<%=articuloSeleccionado.Precio %></p>
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-      <asp:Button ID="agregar_a_carrito" CssClass="btn btn-secondary" runat="server" Text="Agregar al Carrito" OnClick="btnAgregar_Click" />
+      <asp:Button ID="agregar_a_carrito" class="btn btn-outline-secondary" runat="server" Text="Agregar al Carrito" OnClick="btnAgregar_Click" />
 
     <!--Este código cambia la imágen en base al botón que apretemos -->
     <!--Botón siguiente: -->

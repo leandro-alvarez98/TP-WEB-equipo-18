@@ -44,7 +44,7 @@
                         '<%# Eval("Precio") %>'
                     </div>
                     <span class="badge bg-primary rounded-pill">'<%# Eval("Cantidad") %>'</span>
-                    <asp:Button class="btn btn-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
+                    <asp:Button class="btn btn-outline-danger" ID="btnEliminar" runat="server" Text="Eliminar" CommandName="ID" CommandArgument='<%# Eval("ID") %>' OnCommand="btnEliminar_Command" />
                 </li>
                 <hr />
             </ItemTemplate>
@@ -67,7 +67,7 @@
  
     <%if(carrito.Count() > 0)
       { %>
-    <asp:Button ID="btnComprar" Cssclass="btn btn-primary" OnClick="btnComprar_Click" runat="server" Text="Comprar" />
+    <asp:Button ID="btnComprar" class="btn btn-outline-secondary" OnClick="btnComprar_Click" runat="server" Text="Comprar" />
     <%}%>
 </asp:Content>
 
