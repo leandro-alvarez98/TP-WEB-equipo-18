@@ -24,7 +24,7 @@ namespace TP_WEB_EQUIPO_18
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                listaArticulos = negocio.Listar_con_SP();
+                listaArticulos = negocio.listar();
                 AgruparImagenes();
                 EliminarRepetidos();
             }
